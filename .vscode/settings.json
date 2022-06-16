@@ -1,0 +1,6 @@
+{
+    "yaml.schemas": {
+        "kubernetes": "pod.yml",
+        "kubernetes://schema/v1@pod": "file:///home/rodrigodev/Documentos/devops/aula_2/pod.yml"
+    }
+}

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+spec:
+  containers:
+    - name: web
+      image: fabricioveronez/web-page:blue
+      ports:
+        - containerPort: 80
