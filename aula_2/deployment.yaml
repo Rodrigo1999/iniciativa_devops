@@ -52,7 +52,7 @@ spec:
     spec:
       containers:
       - name: kubenews
-        image: fabricioveronez/kube-news:10
+        image: rodrigodev123/kube-news:v1
         env:
         - name: DB_DATABASE
           value: "kubedevnews"
