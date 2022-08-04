@@ -48,3 +48,23 @@ jobs:
           tags: |
             rodrigodev123/kube-news:latest
             rodrigodev123/kube-news:${{github.run_number}}
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v3.0
+        with:
+          # Acceptable values: kubeconfig or service-account or service-principal
+          method: kubeconfig
+          # Contents of kubeconfig file
+          kubeconfig: ${{secrets.KUBE_CONFIG_RAW}}
+
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v4.3
+        with:
+          manifests: |
+            ./aula_4/infra/deployment.yaml
+          # Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
+          images: rodrigodev123/kube-news:${{github.run_number}}
